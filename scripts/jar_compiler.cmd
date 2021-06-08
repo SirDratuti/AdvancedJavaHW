@@ -1,0 +1,1 @@
+javac -d ../build --module-path ../../java-advanced-2021/lib;../../java-advanced-2021/artifacts ../java-solutions/module-info.java ../java-solutions/info/kgeorgiy/ja/belickij/implementor/Implementor.java

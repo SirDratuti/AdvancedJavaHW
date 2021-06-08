@@ -1,0 +1,1 @@
+java -cp ..\build info.kgeorgiy.ja.belickij.rmi.Client %*

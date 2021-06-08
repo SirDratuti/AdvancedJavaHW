@@ -169,6 +169,9 @@ public class StudentDB implements GroupQuery {
     @Override
     public Map<String, String> findStudentNamesByGroup(Collection<Student> students, GroupName group) {
         return filterStream(students.stream(), student -> student.getGroup().equals(group))
-                .collect(Collectors.toMap(Student::getLastName, Student::getFirstName, BinaryOperator.minBy(String::compareTo)));
+                .collect(Collectors.toMap(
+                        Student::getLastName,
+                        Student::getFirstName,
+                        BinaryOperator.minBy(String::compareTo)));
     }
 }

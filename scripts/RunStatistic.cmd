@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-18 -jar ..\lib\junit-platform-console-standalone-1.7.2-all.jar -cp ..\build --select-class=info.kgeorgiy.ja.belickij.i18n.TextStatisticsTest

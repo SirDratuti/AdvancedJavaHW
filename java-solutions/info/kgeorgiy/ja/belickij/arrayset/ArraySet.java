@@ -3,11 +3,9 @@ package info.kgeorgiy.ja.belickij.arrayset;
 import java.util.*;
 
 public class ArraySet<T> extends AbstractSet<T> implements NavigableSet<T> {
-    // :NOTE: final
-    private List<T> array;
+    private final List<T> array;
     private Comparator<? super T> comparator;
 
-    // :NOTE: this()
     public ArraySet() {
         array = Collections.emptyList();
     }
@@ -27,7 +25,6 @@ public class ArraySet<T> extends AbstractSet<T> implements NavigableSet<T> {
     }
 
     private ArraySet(List<T> collection, Comparator<? super T> newComparator, boolean isDescending) {
-        // :NOTE: redundant isDescending
         if (!isDescending) {
             array = collection;
             this.comparator = newComparator;
@@ -51,17 +48,15 @@ public class ArraySet<T> extends AbstractSet<T> implements NavigableSet<T> {
     public NavigableSet<T> descendingSet() {
 
         if (array instanceof DescendingList) {
-            // :NOTE: array
             return new ArraySet<>(new DescendingList<>(((DescendingList<T>) array).getAll()),
                     Collections.reverseOrder(comparator),
-                    !((DescendingList) array).getDescend());
+                    !((DescendingList<T>) array).getDescend());
         } else {
             return new ArraySet<>(new DescendingList<>(array),
                     Collections.reverseOrder(comparator),
                     true);
         }
     }
-
 
     private TreeSet<T> convert(Collection<? extends T> collection, Comparator<? super T> comparator) {
         TreeSet<T> tempArray = new TreeSet<>(comparator);
@@ -113,6 +108,7 @@ public class ArraySet<T> extends AbstractSet<T> implements NavigableSet<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public NavigableSet<T> subSet(T firstElement, boolean firstInc, T secondElement, boolean secondInc) {
         if (comparator != null && this.comparator.compare(firstElement, secondElement) > 0) {
             throw new IllegalArgumentException();
@@ -200,6 +196,7 @@ public class ArraySet<T> extends AbstractSet<T> implements NavigableSet<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean contains(Object object) {
         return Collections.binarySearch(array, (T) object, comparator) >= 0;
     }
