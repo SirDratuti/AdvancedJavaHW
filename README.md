@@ -1,5 +1,5 @@
 # (Домашние задания курса Java-Advanced)
-# package (info.kgeorgiy.ja.belickij.*)
+### package (info.kgeorgiy.ja.belickij.*)
 ## Домашнее задание 1. Обход файлов (package walk)
 Разработайте класс Walk, осуществляющий подсчет хеш-сумм файлов.
 + Формат запуска java Walk <входной файл> <выходной файл>
